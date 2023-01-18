@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dare Dice</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <h1>Dare Dice</h1>
+    <button id="roll-button">Roll Dice</button>
+    <div id="dice-image"></div>
+    <div id="task-display"></div>
+    
+    <script>
+    const taskDisplay = document.getElementById("task-display");
+    const rollButton = document.getElementById("roll-button");
+    const diceImage = document.getElementById("dice-image");
+
+// Initially hide the task display element
+taskDisplay.style.display = "none";
+
+rollButton.onclick = function(){
+    // Generate a random number between 1 and 6
+    let roll = Math.floor(Math.random() * 6) + 1;
+
+    // Use a switch statement to assign a task to the number rolled
+    let task;
+    switch (roll) {
+      case 1:
+        task = "Sing the lyrics to the Star Spangled Banner!"
+        diceImage.innerHTML = '&#9856;';
+        break;
+      case 2:
+        task = "Read the last 5 text messages on your phone out loud!"
+        diceImage.innerHTML = '&#9857;';
+        break;
+      case 3:
+        task = "Belly dance to Moroccan music!"
+        diceImage.innerHTML = '&#9858;';
+        break;
+      case 4:
+        task = "Call your dad and say you got engaged!"
+        diceImage.innerHTML = '&#9859;';
+        break;
+      case 5:
+        task = "Eat a whole raw clove of garlic!"
+        diceImage.innerHTML = '&#9860;';
+        break;
+      case 6:
+        task = "Post your oldest phone selfie as your Instagram story!"
+        diceImage.innerHTML = '&#9861;';
+        break;
+      default:
+        task = "Invalid roll";
+    }
+    
+    setTimeout(() => {
+      diceImage.style.display = "block";
+      diceImage.style.opacity = 1;
+      setTimeout(() => {
+        diceImage.style.opacity = "0";
+      }, 4500)
+  }, 500);  
+
+    taskDisplay.textContent = task;
+    taskDisplay.style.display = "block";
+
+    setTimeout(() => {
+        taskDisplay.style.opacity = 1;
+        setTimeout(() => {
+            taskDisplay.style.opacity = "0";
+        }, 4500);
+    }, 1500);
+}
+    </script>
+  </body>
+</html>
