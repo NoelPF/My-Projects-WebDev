@@ -1,6 +1,5 @@
 // Module 1: Background Initialization
-const initBg = (autoplay = true) => {
-  const bgImgsNames = ['bg-1.jpg', 'bg-2.jpg', 'bg-3.jpg'];
+const initBg = (autoplay = true, bgImgsNames) => {
   const bgImgs = bgImgsNames.map(img => "img/" + img);
 
   $.backstretch(bgImgs, { duration: 4000, fade: 500 });
@@ -37,7 +36,8 @@ const setBgOverlay = () => {
 // Module 4: Document Ready
 $(document).ready(function () {
   const autoplayBg = true; // set Auto Play for Background Images
-  initBg(autoplayBg);
+  const defaultBgImgs = ['bg-1.jpg', 'bg-2.jpg', 'bg-3.jpg'];
+  initBg(autoplayBg, defaultBgImgs);
   setBgOverlay();
 
   const bgControl = $('.tm-bg-control');
@@ -45,6 +45,18 @@ $(document).ready(function () {
     bgControl.removeClass('active');
     $(this).addClass('active');
     const id = $(this).data('id');
+
+    // Update the background images based on the active tab
+    let bgImgsNames;
+    if (id === 'tab1') {
+      bgImgsNames = ['bg-1.jpg', 'bg-2.jpg', 'bg-3.jpg'];
+    } else if (id === 'tab2') {
+      bgImgsNames = ['bg-4.jpg', 'bg-5.jpg', 'bg-6.jpg'];
+    } else if (id === 'tab3') {
+      bgImgsNames = ['bg-7.jpg', 'bg-8.jpg', 'bg-9.jpg'];
+    }
+
+    initBg(autoplayBg, bgImgsNames);
     setBg(id);
   });
 
