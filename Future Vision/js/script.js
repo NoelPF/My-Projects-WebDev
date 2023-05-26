@@ -97,4 +97,4 @@ contactForm.submit(function (e) {
   if (message === '') {
     showError('Please enter a message.', messageInput);
     return;
-.
+  }
