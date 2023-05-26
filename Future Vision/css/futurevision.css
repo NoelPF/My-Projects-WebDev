@@ -159,6 +159,8 @@ p {
 .tm-bg-control.active,
 .tm-bg-control:hover {
   background-color: white;
+  border: 2px solid #fff;
+  border-radius: 50%;
 }
 
 /* Container Styling */
